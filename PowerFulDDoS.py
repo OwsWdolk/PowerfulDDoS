@@ -9,9 +9,9 @@ from os import system
 init(autoreset=True)
 system('cls||clear')
 
-print(banner\n)
+print(banner)
 
-guc = input(f"""
+guc = input(f"""\n
     {Fore.GREEN}Attacking Power:
         {Fore.BLUE}1: Easy Mode
         {Fore.GREEN}2: Normal Mode
